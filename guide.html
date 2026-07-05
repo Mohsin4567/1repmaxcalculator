@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="WeAR4c4SPAVcSYXWOXXKKTpcC123NWuZND2gngiqcXw" />
+<title>1 Rep Max Calculator Guide - How to Find Your True Strength Max</title>
+<meta name="description" content="Complete guide to 1 rep max calculators. Learn how they work, which formulas are accurate, and how to use your 1RM for training programming.">
+<meta name="keywords" content="1 rep max calculator, 1RM guide, strength training, bench press 1RM, squat 1RM, deadlift 1RM">
+<link rel="canonical" href="https://mohsin4567.github.io/1repmaxcalculator/guide.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1EDE3;
+    --paper-deep:#E8E2D2;
+    --ink:#24231F;
+    --ink-soft:rgba(36,35,31,0.62);
+    --board:#2B2E28;
+    --board-panel:#343830;
+    --chalk:#F3F0E6;
+    --chalk-soft:rgba(243,240,230,0.58);
+    --iron:#C1372B;
+    --iron-dim:#9C2C22;
+    --steel:#52646A;
+    --brass:#C99A2E;
+    --line:rgba(36,35,31,0.14);
+    --chalkline:rgba(243,240,230,0.20);
+    --radius:2px;
+    --display:'Oswald',"Arial Narrow",sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+    --mono:'JetBrains Mono',"SFMono-Regular",monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:var(--display);margin:1.2em 0 0.6em;text-transform:uppercase;letter-spacing:0.01em;}
+  h1{font-size:2.8rem;line-height:1.1;}
+  h2{font-size:2rem;border-bottom:3px solid var(--iron);padding-bottom:0.5em;}
+  h3{font-size:1.4rem;}
+  h4{font-size:1.1rem;}
+  p{margin:0 0 1em 0;line-height:1.7;}
+  li{margin-bottom:0.8em;line-height:1.7;}
+  
+  .wrap{max-width:900px;margin:0 auto;padding:0 28px;}
+
+  a{color:var(--iron);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  :focus-visible{outline:3px solid var(--brass);outline-offset:2px;}
+
+  /* ---------- header ---------- */
+  .site-header{background:var(--board);color:var(--chalk);border-bottom:1px solid var(--chalkline);padding:20px 0;}
+  .site-header .wrap{display:flex;align-items:center;justify-content:space-between;}
+  .mark{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:0.08em;}
+  .mark span{color:var(--iron);}
+  .nav-back{font-family:var(--mono);font-size:12px;color:var(--chalk-soft);text-decoration:none;}
+  .nav-back:hover{color:var(--chalk);}
+
+  /* ---------- main content ---------- */
+  main{padding:60px 0;}
+  article{background:white;padding:0;}
+  
+  article > h1{margin-top:0;}
+  
+  table{width:100%;border-collapse:collapse;margin:1.5em 0;background:white;}
+  table th{
+    background:var(--board);
+    color:var(--chalk);
+    padding:12px;
+    text-align:left;
+    font-weight:600;
+    border-bottom:2px solid var(--iron);
+  }
+  table td{
+    padding:12px;
+    border-bottom:1px solid var(--line);
+  }
+  table tr:nth-child(even){background:var(--paper);}
+  table tr:hover{background:var(--paper-deep);}
+
+  /* ---------- code / formulas ---------- */
+  code{
+    background:var(--paper-deep);
+    padding:2px 6px;
+    border-radius:3px;
+    font-family:var(--mono);
+    color:var(--iron);
+  }
+
+  /* ---------- lists ---------- */
+  ol, ul{
+    margin:1em 0;
+    padding-left:1.8em;
+  }
+  
+  strong{color:var(--ink);font-weight:600;}
+
+  /* ---------- call to action ---------- */
+  .cta-box{
+    background:var(--board);
+    color:var(--chalk);
+    padding:2em;
+    border-radius:4px;
+    margin:2em 0;
+    border-left:4px solid var(--iron);
+  }
+  .cta-box h3{color:var(--chalk);margin-top:0;}
+  .cta-button{
+    display:inline-block;
+    background:var(--iron);
+    color:var(--chalk);
+    padding:14px 28px;
+    border-radius:3px;
+    text-decoration:none;
+    font-weight:600;
+    margin-top:1em;
+  }
+  .cta-button:hover{background:var(--iron-dim);}
+
+  /* ---------- footer ---------- */
+  .site-footer{background:var(--board);color:var(--chalk-soft);padding:32px 0;font-size:13px;margin-top:60px;border-top:1px solid var(--chalkline);}
+  .site-footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+
+  @media (max-width:760px){
+    h1{font-size:2rem;}
+    h2{font-size:1.5rem;}
+    .site-header .wrap{flex-direction:column;align-items:flex-start;gap:10px;}
+    table{font-size:0.9rem;}
+    table th, table td{padding:8px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="mark">1<span>RM</span>·CALC</div>
+    <a href="index.html" class="nav-back">← Back to Calculator</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <article>
+      <h1>1 Rep Max Calculator: How to Find Your True Strength Max Without Testing It</h1>
+      
+      <p>If you've ever wondered how much you could lift for one all-out rep — without actually risking a heavy single under the bar — a <strong>1 rep max calculator</strong> gives you the answer in seconds. Enter the weight and reps from a recent set, and it estimates your one-rep max (1RM) using formulas built from decades of strength research.</p>
+
+      <p>This guide covers what a 1RM actually is, how a 1 rep max calculator works, which formula to trust, and how to use your number to actually plan your training.</p>
+
+      <h2>What Is a 1 Rep Max (1RM)?</h2>
+
+      <p>Your one-rep max is the heaviest weight you can lift for a single, full-range repetition with good form. It's the standard unit of comparison in strength training — it's how lifters compare bench press, squat, and deadlift numbers, and how programs like 5/3/1 or Wendler-style periodization calculate every working weight.</p>
+
+      <p>The problem is that testing a true 1RM takes practice, a spotter, and real risk of injury if your technique breaks down under maximal load. That's where a 1 rep max calculator comes in: it lets you estimate the number from a safer, sub-maximal set you've already done.</p>
+
+      <h2>How a 1 Rep Max Calculator Works</h2>
+
+      <p>A 1 rep max calculator takes two inputs — the weight you lifted and the number of reps you completed with it — and runs that data through one or more established strength formulas. Because fatigue accumulates predictably as reps increase, researchers have been able to model the relationship between reps performed and percentage of true 1RM fairly accurately, especially in the 1–10 rep range.</p>
+
+      <p>To use one:</p>
+      
+      <ol>
+        <li><strong>Pick a genuine working set.</strong> The estimate is only as good as the input — use a set where the last rep or two was hard, not one with several reps left in reserve.</li>
+        <li><strong>Enter the weight and reps.</strong> Most calculators accept both pounds and kilograms.</li>
+        <li><strong>Read your estimated 1RM.</strong> A good calculator won't just show one number — it will average several formulas to smooth out the quirks of any single model.</li>
+        <li><strong>Use the percentage breakdown.</strong> The real value isn't the max itself; it's knowing what 70%, 80%, or 90% of that number looks like for programming future sessions.</li>
+      </ol>
+
+      <h2>The Formulas Behind the Numbers</h2>
+
+      <p>Most 1 rep max calculators lean on a handful of peer-reviewed formulas, each derived from different populations and rep ranges. The most common:</p>
+
+      <ul>
+        <li><strong>Epley formula:</strong> 1RM = weight × (1 + reps ÷ 30)</li>
+        <li><strong>Brzycki formula:</strong> 1RM = weight × 36 ÷ (37 − reps)</li>
+        <li><strong>Lombardi formula:</strong> 1RM = weight × reps^0.10</li>
+        <li><strong>O'Conner formula:</strong> 1RM = weight × (1 + 0.025 × reps)</li>
+        <li><strong>Mayhew et al. formula:</strong> 1RM = 100 × weight ÷ (52.2 + 41.9 × e^(−0.055 × reps))</li>
+      </ul>
+
+      <p>No single formula is perfectly accurate for every lifter, rep range, or exercise — Brzycki tends to run slightly conservative at higher reps, while Epley trends higher. Averaging multiple formulas, rather than relying on just one, gives a more reliable estimate and is how most modern calculators are built.</p>
+
+      <h2>1RM Percentage Chart: What to Load</h2>
+
+      <p>Once you have an estimated max, the more useful output is a percentage chart — what weight corresponds to each percentage of your max, and roughly how many reps that load typically allows:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>% of 1RM</th>
+            <th>Typical Reps</th>
+            <th>Common Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>100%</td>
+            <td>1</td>
+            <td>True max attempt</td>
+          </tr>
+          <tr>
+            <td>90–95%</td>
+            <td>2–3</td>
+            <td>Max strength / peaking</td>
+          </tr>
+          <tr>
+            <td>80–85%</td>
+            <td>5–6</td>
+            <td>Strength phases</td>
+          </tr>
+          <tr>
+            <td>70–75%</td>
+            <td>8–10</td>
+            <td>Hypertrophy</td>
+          </tr>
+          <tr>
+            <td>60–65%</td>
+            <td>12–15</td>
+            <td>Volume / technique work</td>
+          </tr>
+          <tr>
+            <td>50–55%</td>
+            <td>20+</td>
+            <td>Warm-ups, deload</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>This is what turns a single number into an actual training tool — instead of guessing what "80% intensity" means for a given lift, you get the exact weight.</p>
+
+      <h2>1 Rep Max Calculator for Bench Press, Squat, and Deadlift</h2>
+
+      <p>The math behind a 1 rep max calculator doesn't change by exercise, but the practical accuracy does. A few notes for the big lifts specifically:</p>
+
+      <ul>
+        <li><strong>Bench press 1RM calculator:</strong> Bench tends to be one of the more accurately estimated lifts, since bar speed and technique stay relatively consistent across rep ranges.</li>
+        <li><strong>Squat 1RM calculator:</strong> Squat estimates can run slightly low at higher reps, since fatigue and depth consistency affect longer sets more than they affect a bench press.</li>
+        <li><strong>Deadlift 1RM calculator:</strong> Deadlift is the least consistent lift to estimate from higher reps — grip and lower-back fatigue accumulate faster than in squat or bench, so estimates from sets of 8+ reps tend to undershoot true max more than for other lifts.</li>
+      </ul>
+
+      <p>For all three, the same rule applies: the lower the rep count on your input set (ideally under 6), the more accurate the calculator's output will be.</p>
+
+      <h2>How Accurate Is a 1 Rep Max Calculator?</h2>
+
+      <p>For sets of 1–10 reps performed close to failure, most 1RM formulas land within a few percent of an actual tested max for experienced lifters. Accuracy drops for:</p>
+
+      <ul>
+        <li><strong>High-rep sets</strong> (12+ reps), where fatigue and endurance start influencing the number more than raw strength.</li>
+        <li><strong>Beginners</strong>, whose technique and neuromuscular efficiency vary more from set to set.</li>
+        <li><strong>Sets with reps left in the tank</strong>, since the formulas assume the set was taken close to failure.</li>
+      </ul>
+
+      <p>A calculated 1RM is best treated as a strong estimate for programming purposes — not a substitute for an actual tested max when precision matters, such as before a powerlifting meet.</p>
+
+      <h2>Tips for Getting an Accurate Estimate</h2>
+
+      <ul>
+        <li><strong>Use a true working set.</strong> A set that wasn't challenging will underestimate your max.</li>
+        <li><strong>Keep reps under 10, ideally under 6.</strong> Every formula was built on lower-rep data, and accuracy degrades the further you get from it.</li>
+        <li><strong>Warm up properly before your test set.</strong> A cold or fatigued attempt skews the number down.</li>
+        <li><strong>Re-test every few weeks, not every session.</strong> Strength doesn't change day to day; frequent re-testing just adds noise.</li>
+        <li><strong>Track the trend, not just the number.</strong> A single 1RM estimate matters less than whether it's climbing over weeks and months of training.</li>
+      </ul>
+
+      <h2>How Often Should You Calculate Your 1RM?</h2>
+
+      <p>For most lifters, recalculating your one-rep max every 4–8 weeks is enough to track real progress without over-testing. If you're following a structured program (like a strength block or a powerlifting peaking cycle), recalculating at the start of each new training block lets you set accurate percentages for the weeks ahead.</p>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>Is a 1 rep max calculator accurate?</h3>
+      <p>Yes, within a few percent for most lifters, provided the input set was taken close to failure and stayed under about 10 reps. Accuracy decreases with higher rep counts.</p>
+
+      <h3>What's the best formula for estimating 1RM?</h3>
+      <p>There isn't a single "best" formula — Epley, Brzycki, and Lombardi are the most widely used, and each has slightly different tendencies. Averaging several formulas together typically outperforms relying on any one of them.</p>
+
+      <h3>Can I use a 1 rep max calculator for any exercise?</h3>
+      <p>It works best for compound barbell lifts like the squat, bench press, and deadlift, where load and rep count scale predictably. It's less reliable for isolation exercises or bodyweight movements.</p>
+
+      <h3>Do I need to lift to failure to use the calculator?</h3>
+      <p>Not literally to failure, but close to it. A set with several reps left in reserve will produce a lower, less accurate estimate than the true max.</p>
+
+      <h3>How many reps should I use to estimate my 1RM?</h3>
+      <p>Anywhere from 1–10 reps works, but 3–6 reps tends to give the best balance of safety and accuracy for most lifters.</p>
+
+      <div class="cta-box">
+        <h3>Calculate Your 1RM Now</h3>
+        <p>A 1 rep max calculator turns one working set into a full picture of your strength — a max number, a percentage chart, and exact weights to load for every phase of training. Test a solid set, plug in the numbers, and let the formulas do the rest.</p>
+        <a href="index.html" class="cta-button">Open Calculator</a>
+      </div>
+
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>1 Rep Max Calculator — Strength Training Tool</span>
+    <span>Estimates only — not medical or coaching advice.</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "1 Rep Max Calculator: How to Find Your True Strength Max Without Testing It",
+  "description": "Complete guide to 1 rep max calculators, formulas, and how to use them for training.",
+  "author": {
+    "@type": "Person",
+    "name": "Mohsin"
+  },
+  "datePublished": "2026-07-05",
+  "url": "https://mohsin4567.github.io/1repmaxcalculator/guide.html"
+}
+</script>
+
+</body>
+</html>
