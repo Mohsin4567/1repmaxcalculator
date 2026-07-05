@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 Rep Max Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💪 1 Rep Max Calculator</h1>
+            <p class="subtitle">Estimate your maximum weight for a single repetition</p>
+        </header>
+
+        <main class="calculator-wrapper">
+            <div class="input-section">
+                <div class="form-group">
+                    <label for="weight">Weight Lifted (lbs)</label>
+                    <input 
+                        type="number" 
+                        id="weight" 
+                        placeholder="Enter weight" 
+                        min="0" 
+                        step="0.5"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="reps">Number of Reps</label>
+                    <input 
+                        type="number" 
+                        id="reps" 
+                        placeholder="Enter reps" 
+                        min="1" 
+                        max="100" 
+                        step="1"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="unit">Weight Unit</label>
+                    <select id="unit">
+                        <option value="lbs">Pounds (lbs)</option>
+                        <option value="kg">Kilograms (kg)</option>
+                    </select>
+                </div>
+
+                <button class="calculate-btn" onclick="calculateOneRepMax()">Calculate 1RM</button>
+            </div>
+
+            <div class="results-section" id="results" style="display: none;">
+                <h2>Your 1 Rep Max Estimates</h2>
+                
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3>Brzycki Formula</h3>
+                        <p class="result-value" id="brzycki">-</p>
+                        <p class="formula-note">Most popular formula</p>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Epley Formula</h3>
+                        <p class="result-value" id="epley">-</p>
+                        <p class="formula-note">Used by many gyms</p>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Lander Formula</h3>
+                        <p class="result-value" id="lander">-</p>
+                        <p class="formula-note">Good for heavy lifts</p>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Lombardi Formula</h3>
+                        <p class="result-value" id="lombardi">-</p>
+                        <p class="formula-note">Power law approach</p>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Adams Formula</h3>
+                        <p class="result-value" id="adams">-</p>
+                        <p class="formula-note">Alternative method</p>
+                    </div>
+
+                    <div class="result-card highlight">
+                        <h3>Average Estimate</h3>
+                        <p class="result-value" id="average">-</p>
+                        <p class="formula-note">Mean of all formulas</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>Note:</strong> These are estimates. Actual 1RM can vary based on training experience, technique, and individual factors.</p>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>ℹ️ How to Use</h3>
+                <ol>
+                    <li>Enter the weight you can lift for multiple reps</li>
+                    <li>Enter the number of reps you performed</li>
+                    <li>Select your preferred weight unit (lbs or kg)</li>
+                    <li>Click "Calculate 1RM" to get your estimates</li>
+                </ol>
+
+                <h3>📊 About the Formulas</h3>
+                <ul>
+                    <li><strong>Brzycki:</strong> Weight × (36 / (37 - Reps)) — Most commonly used</li>
+                    <li><strong>Epley:</strong> Weight × (1 + Reps / 30) — Popular and reliable</li>
+                    <li><strong>Lander:</strong> (100 × Weight) / (101.3 - 2.67123 × Reps) — Good for 2-10 reps</li>
+                    <li><strong>Lombardi:</strong> Weight × Reps^0.10 — Power law based</li>
+                    <li><strong>Adams:</strong> Weight × (Reps / 30 + 1) / (1.0278 - 0.0278 × Reps) — Alternative</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>💪 Train hard, lift smart!</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
