@@ -1,256 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Google Site Verification -->
-    <meta name="google-site-verification" content="WeAR4c4SPAVcSYXWOXXKKTpcC123NWuZND2gngiqcXw" />
-    
-    <!-- SEO Meta Tags -->
-    <title>1 Rep Max Calculator - Free Online 1RM Estimator Tool</title>
-    <meta name="description" content="Calculate your 1 rep max instantly with our free online calculator. Uses Brzycki, Epley, Lander, Lombardi & Adams formulas. Perfect for powerlifters, bodybuilders & strength athletes.">
-    <meta name="keywords" content="1 rep max calculator, one rep max, 1RM calculator, strength training calculator, powerlifting calculator, bodybuilding calculator">
-    <meta name="author" content="Mohsin">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
-    
-    <!-- Open Graph Meta Tags (for social media sharing) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mohsin4567.github.io/1repmaxcalculator/">
-    <meta property="og:title" content="1 Rep Max Calculator - Free Online 1RM Estimator">
-    <meta property="og:description" content="Calculate your one rep max using 5 proven formulas. Free, fast, and accurate 1RM estimates for all fitness levels.">
-    <meta property="og:image" content="https://mohsin4567.github.io/1repmaxcalculator/og-image.png">
-    <meta property="og:site_name" content="1 Rep Max Calculator">
-    
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="1 Rep Max Calculator - Free Online 1RM Estimator">
-    <meta name="twitter:description" content="Calculate your one rep max using multiple formulas. Perfect for powerlifters, bodybuilders, and strength athletes.">
-    <meta name="twitter:image" content="https://mohsin4567.github.io/1repmaxcalculator/og-image.png">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://mohsin4567.github.io/1repmaxcalculator/">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>💪</text></svg>">
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="script.js" as="script">
-    
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="WeAR4c4SPAVcSYXWOXXKKTpcC123NWuZND2gngiqcXw" />
+<title>1 Rep Max Calculator — Know Your Max</title>
+<meta name="description" content="Estimate your one-rep max from any working set. See training percentages and a real plate-loading breakdown for your lift.">
+<meta name="keywords" content="1 rep max calculator, one rep max, 1RM calculator, strength training calculator, powerlifting calculator">
+<link rel="canonical" href="https://mohsin4567.github.io/1repmaxcalculator/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1EDE3;
+    --paper-deep:#E8E2D2;
+    --ink:#24231F;
+    --ink-soft:rgba(36,35,31,0.62);
+    --board:#2B2E28;
+    --board-panel:#343830;
+    --chalk:#F3F0E6;
+    --chalk-soft:rgba(243,240,230,0.58);
+    --iron:#C1372B;
+    --iron-dim:#9C2C22;
+    --steel:#52646A;
+    --brass:#C99A2E;
+    --line:rgba(36,35,31,0.14);
+    --chalkline:rgba(243,240,230,0.20);
+    --radius:2px;
+    --display:'Oswald',"Arial Narrow",sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+    --mono:'JetBrains Mono',"SFMono-Regular",monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:var(--display);margin:0;text-transform:uppercase;letter-spacing:0.01em;}
+  p{margin:0;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  a{color:inherit;}
+  :focus-visible{outline:3px solid var(--brass);outline-offset:2px;}
+
+  /* ---------- header ---------- */
+  .site-header{background:var(--board);color:var(--chalk);border-bottom:1px solid var(--chalkline);}
+  .site-header .wrap{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;}
+  .mark{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:0.08em;}
+  .mark span{color:var(--iron);}
+  .tagline{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;color:var(--chalk-soft);text-transform:uppercase;}
+
+  /* ---------- hero / chalkboard ---------- */
+  .hero{background:var(--board);color:var(--chalk);padding:56px 0 72px;}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--brass);margin-bottom:14px;display:block;}
+  .hero h1{font-size:clamp(40px,7vw,72px);line-height:1.02;font-weight:700;max-width:14ch;}
+  .hero h1 em{font-style:normal;color:var(--iron);}
+  .hero-sub{margin-top:16px;color:var(--chalk-soft);font-size:17px;max-width:46ch;}
+
+  .calc{margin-top:44px;display:grid;grid-template-columns:1fr 1.15fr;gap:1px;background:var(--chalkline);border:1px solid var(--chalkline);}
+  .calc > div{background:var(--board-panel);padding:32px;}
+
+  .field-label{font-family:var(--mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--chalk-soft);display:block;margin-bottom:8px;}
+  .field{margin-bottom:22px;}
+  .weight-row{display:flex;gap:10px;}
+  .num-input{
+    width:100%;
+    background:transparent;
+    border:none;
+    border-bottom:2px solid var(--chalkline);
+    color:var(--chalk);
+    font-family:var(--display);
+    font-size:40px;
+    font-weight:600;
+    padding:6px 2px 8px;
+    transition:border-color .15s ease;
+  }
+  .num-input:focus{border-bottom-color:var(--iron);outline:none;}
+  .num-input::-webkit-outer-spin-button,.num-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+
+  .unit-toggle{display:flex;border:1px solid var(--chalkline);border-radius:var(--radius);overflow:hidden;height:52px;flex:0 0 96px;}
+  .unit-toggle button{
+    flex:1;background:transparent;color:var(--chalk-soft);border:none;
+    font-family:var(--mono);font-size:13px;letter-spacing:0.05em;cursor:pointer;
+  }
+  .unit-toggle button.active{background:var(--iron);color:var(--chalk);}
+  .unit-toggle button:not(.active):hover{background:rgba(243,240,230,0.08);}
+
+  .reps-note{font-size:13px;color:var(--brass);margin-top:10px;display:none;}
+  .reps-note.show{display:block;}
+
+  .result-stage{display:flex;flex-direction:column;align-items:flex-start;}
+  .result-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--chalk-soft);}
+  .result-figure{display:flex;align-items:baseline;gap:10px;margin-top:8px;}
+  .result-number{font-family:var(--display);font-weight:700;font-size:clamp(56px,9vw,88px);color:var(--chalk);line-height:1;}
+  .result-unit{font-family:var(--mono);font-size:20px;color:var(--chalk-soft);}
+  .result-caption{font-size:13px;color:var(--chalk-soft);margin-top:10px;}
+
+  .barbell{width:100%;margin-top:26px;}
+  .plate-text{font-family:var(--mono);font-size:13px;color:var(--chalk-soft);margin-top:14px;}
+  .plate-text strong{color:var(--chalk);font-weight:600;}
+
+  /* ---------- percentage section ---------- */
+  .section{padding:72px 0;}
+  .section-head{margin-bottom:36px;max-width:60ch;}
+  .section-head .eyebrow{color:var(--iron);}
+  .section-head h2{font-size:clamp(28px,4vw,38px);color:var(--ink);}
+  .section-head p{margin-top:12px;color:var(--ink-soft);font-size:16px;}
+
+  .pct-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:14px;}
+  .pct-table th{
+    text-align:left;font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--ink-soft);padding:10px 12px;border-bottom:2px solid var(--ink);
+  }
+  .pct-table td{padding:12px 12px;border-bottom:1px solid var(--line);}
+  .pct-table tr.match td{background:var(--iron);color:var(--chalk);}
+  .pct-bar-cell{position:relative;}
+  .pct-bar{height:8px;background:var(--steel);border-radius:1px;}
+  .pct-table tr.match .pct-bar{background:var(--chalk);}
+  .pct-value{font-weight:600;}
+
+  /* ---------- formulas / spec sheet ---------- */
+  .spec-section{background:var(--paper-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .spec-list{border-top:1px solid var(--ink);}
+  .spec-row{
+    display:grid;grid-template-columns:1fr 1.4fr auto;gap:20px;align-items:baseline;
+    padding:18px 0;border-bottom:1px solid var(--line);
+  }
+  .spec-name{font-family:var(--body);font-weight:600;font-size:15px;}
+  .spec-formula{font-family:var(--mono);font-size:13px;color:var(--ink-soft);}
+  .spec-value{font-family:var(--mono);font-size:16px;font-weight:600;text-align:right;}
+
+  /* ---------- tips ---------- */
+  .tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+  .tip{border-top:3px solid var(--iron);padding-top:16px;}
+  .tip-num{font-family:var(--mono);font-size:12px;color:var(--ink-soft);letter-spacing:0.1em;}
+  .tip h3{font-size:17px;font-family:var(--body);text-transform:none;margin-top:8px;}
+  .tip p{margin-top:8px;color:var(--ink-soft);font-size:14.5px;}
+
+  /* ---------- footer ---------- */
+  .site-footer{background:var(--board);color:var(--chalk-soft);padding:32px 0;font-size:13px;}
+  .site-footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+
+  @media (max-width:760px){
+    .calc{grid-template-columns:1fr;}
+    .tips-grid{grid-template-columns:1fr;}
+    .spec-row{grid-template-columns:1fr;gap:4px;}
+    .spec-value{text-align:left;}
+    .site-header .wrap{flex-direction:column;align-items:flex-start;gap:6px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar" aria-label="Main Navigation">
-            <div class="nav-content">
-                <a href="index.html" class="logo" title="1 Rep Max Calculator Home">💪 1RM Calculator</a>
-                <ul class="nav-links">
-                    <li><a href="index.html" class="active">Calculator</a></li>
-                    <li><a href="formulas.html">Formulas</a></li>
-                    <li><a href="guide.html">Guide</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="mark">1<span>RM</span>·CALC</div>
+    <div class="tagline">Strength / Estimation Tool</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">One-Rep Max</span>
+    <h1>Load it. Lift it.<br><em>Know</em> your max.</h1>
+    <p class="hero-sub">Enter one honest working set and get an estimated one-rep max, a training percentage chart, and exactly which plates to load.</p>
+
+    <div class="calc">
+      <div>
+        <div class="field">
+          <label class="field-label" for="weightInput">Weight lifted</label>
+          <div class="weight-row">
+            <input id="weightInput" class="num-input" type="number" inputmode="decimal" min="0" step="0.5" value="100" aria-describedby="unitHelp">
+            <div class="unit-toggle" role="group" aria-label="Unit">
+              <button type="button" id="unitLb" class="active" aria-pressed="true">lb</button>
+              <button type="button" id="unitKg" aria-pressed="false">kg</button>
             </div>
-        </nav>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="repsInput">Reps performed</label>
+          <input id="repsInput" class="num-input" type="number" inputmode="numeric" min="1" max="20" step="1" value="5">
+          <p class="reps-note" id="repsNote">Estimates get less reliable past ~12 reps. For the most accurate number, test with a set of 1–10.</p>
+        </div>
+      </div>
 
-        <header>
-            <h1>💪 1 Rep Max Calculator</h1>
-            <p class="subtitle">Estimate your maximum weight for a single repetition</p>
-            <p class="tagline">Free online calculator using 5 proven formulas - Brzycki, Epley, Lander, Lombardi & Adams</p>
-        </header>
+      <div class="result-stage">
+        <span class="result-eyebrow">Estimated 1-Rep Max</span>
+        <div class="result-figure">
+          <span class="result-number" id="resultNumber" aria-live="polite">116</span>
+          <span class="result-unit" id="resultUnit">lb</span>
+        </div>
+        <p class="result-caption">Averaged across five research formulas — Epley, Brzycki, Lombardi, O'Conner, and Mayhew.</p>
 
-        <main class="calculator-wrapper">
-            <div class="input-section">
-                <h2>Calculate Your 1RM</h2>
-                <div class="form-group">
-                    <label for="weight">Weight Lifted</label>
-                    <input 
-                        type="number" 
-                        id="weight" 
-                        placeholder="Enter weight" 
-                        min="0" 
-                        step="0.5"
-                        aria-label="Weight lifted"
-                    >
-                </div>
+        <svg class="barbell" id="barbellSvg" viewBox="0 0 640 150" aria-hidden="true"></svg>
+        <p class="plate-text" id="plateText"></p>
+      </div>
+    </div>
+  </div>
+</section>
 
-                <div class="form-group">
-                    <label for="reps">Number of Reps</label>
-                    <input 
-                        type="number" 
-                        id="reps" 
-                        placeholder="Enter reps" 
-                        min="1" 
-                        max="100" 
-                        step="1"
-                        aria-label="Number of repetitions"
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="unit">Weight Unit</label>
-                    <select id="unit" aria-label="Weight unit selection">
-                        <option value="lbs">Pounds (lbs)</option>
-                        <option value="kg">Kilograms (kg)</option>
-                    </select>
-                </div>
-
-                <button class="calculate-btn" onclick="calculateOneRepMax()" aria-label="Calculate one rep max">Calculate 1RM</button>
-            </div>
-
-            <div class="results-section" id="results" style="display: none;" role="region" aria-live="polite" aria-label="Calculation results">
-                <h2>Your 1 Rep Max Estimates</h2>
-                
-                <div class="results-grid">
-                    <div class="result-card">
-                        <h3>Brzycki Formula</h3>
-                        <p class="result-value" id="brzycki">-</p>
-                        <p class="formula-note">Most popular formula</p>
-                    </div>
-
-                    <div class="result-card">
-                        <h3>Epley Formula</h3>
-                        <p class="result-value" id="epley">-</p>
-                        <p class="formula-note">Used by many gyms</p>
-                    </div>
-
-                    <div class="result-card">
-                        <h3>Lander Formula</h3>
-                        <p class="result-value" id="lander">-</p>
-                        <p class="formula-note">Good for heavy lifts</p>
-                    </div>
-
-                    <div class="result-card">
-                        <h3>Lombardi Formula</h3>
-                        <p class="result-value" id="lombardi">-</p>
-                        <p class="formula-note">Power law approach</p>
-                    </div>
-
-                    <div class="result-card">
-                        <h3>Adams Formula</h3>
-                        <p class="result-value" id="adams">-</p>
-                        <p class="formula-note">Alternative method</p>
-                    </div>
-
-                    <div class="result-card highlight">
-                        <h3>Average Estimate</h3>
-                        <p class="result-value" id="average">-</p>
-                        <p class="formula-note">Mean of all formulas</p>
-                    </div>
-                </div>
-
-                <div class="info-box">
-                    <p><strong>Note:</strong> These are estimates. Actual 1RM can vary based on training experience, technique, and individual factors.</p>
-                </div>
-            </div>
-
-            <section class="info-section" aria-labelledby="how-to-use">
-                <h2 id="how-to-use">How to Use the 1RM Calculator</h2>
-                <ol>
-                    <li>Enter the weight you can lift for multiple reps</li>
-                    <li>Enter the number of reps you performed</li>
-                    <li>Select your preferred weight unit (lbs or kg)</li>
-                    <li>Click "Calculate 1RM" to get your estimates</li>
-                </ol>
-
-                <h3>Why Use Multiple Formulas?</h3>
-                <p>Different formulas work better for different rep ranges and individual variations. By calculating with 5 formulas and averaging them, you get the most accurate estimate possible.</p>
-            </section>
-
-            <section class="benefits-section" aria-labelledby="benefits">
-                <h2 id="benefits">Benefits of Calculating Your 1 Rep Max</h2>
-                <ul>
-                    <li><strong>Track Progress:</strong> Monitor your strength gains over time</li>
-                    <li><strong>Plan Workouts:</strong> Calculate safe training weights based on your max</li>
-                    <li><strong>Set Goals:</strong> Create realistic strength targets</li>
-                    <li><strong>Prevent Injury:</strong> Avoid ego lifting with calculated estimates</li>
-                    <li><strong>Compare Performance:</strong> Benchmark against previous attempts</li>
-                </ul>
-            </section>
-
-            <section class="cta-section">
-                <h2>Learn More About Formulas</h2>
-                <p>Want to know how each formula works? Check out our detailed explanation.</p>
-                <a href="formulas.html" class="cta-button">View All Formulas →</a>
-            </section>
-        </main>
-
-        <footer>
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Calculator</a></li>
-                        <li><a href="formulas.html">Formulas</a></li>
-                        <li><a href="guide.html">Beginner's Guide</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="https://github.com/Mohsin4567/1repmaxcalculator" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>About</h4>
-                    <p>Free online 1 rep max calculator for powerlifters, bodybuilders, and fitness enthusiasts worldwide.</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 1 Rep Max Calculator. All rights reserved. | 💪 Train hard, lift smart!</p>
-            </div>
-        </footer>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Training Percentages</span>
+      <h2>What to load</h2>
+      <p>Percentages of your estimated max, with the working weight and roughly how many reps that load allows. Your current set is highlighted.</p>
     </div>
 
-    <script src="script.js"></script>
-    
-    <!-- Schema.org structured data for SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "1 Rep Max Calculator",
-      "description": "Free online calculator to estimate your one rep max using multiple proven formulas",
-      "url": "https://mohsin4567.github.io/1repmaxcalculator/",
-      "applicationCategory": "UtilityApplication",
-      "author": {
-        "@type": "Person",
-        "name": "Mohsin"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
+    <table class="pct-table">
+      <thead>
+        <tr>
+          <th>% of max</th>
+          <th>Weight</th>
+          <th>Typical reps</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="pctBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="spec-section">
+  <div class="section wrap">
+    <div class="section-head">
+      <span class="eyebrow">The Math</span>
+      <h2>Five formulas, one lift</h2>
+      <p>No single formula is exact — each was built from different lifters and rep ranges. Averaging them smooths out individual quirks.</p>
+    </div>
+
+    <div class="spec-list" id="specList"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Using This Tool</span>
+      <h2>Get a real number</h2>
+    </div>
+    <div class="tips-grid">
+      <div class="tip">
+        <span class="tip-num">01</span>
+        <h3>Pick a true working set</h3>
+        <p>Use a set taken close to failure — one where the last rep or two was genuinely hard. A set with reps left in the tank underestimates your max.</p>
+      </div>
+      <div class="tip">
+        <span class="tip-num">02</span>
+        <h3>Stay under 10 reps</h3>
+        <p>Every formula here is built on lower-rep data. Above ~12 reps, fatigue and technique breakdown skew the estimate lower than reality.</p>
+      </div>
+      <div class="tip">
+        <span class="tip-num">03</span>
+        <h3>Re-test every few weeks</h3>
+        <p>An estimate isn't a substitute for a real max attempt, but it's a low-risk way to track whether your training is actually working.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>Estimates only — not medical or coaching advice. Use a spotter for real max attempts.</span>
+    <span>Bar assumed at 45 lb / 20 kg.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const weightInput = document.getElementById('weightInput');
+  const repsInput = document.getElementById('repsInput');
+  const unitLb = document.getElementById('unitLb');
+  const unitKg = document.getElementById('unitKg');
+  const resultNumber = document.getElementById('resultNumber');
+  const resultUnit = document.getElementById('resultUnit');
+  const repsNote = document.getElementById('repsNote');
+  const pctBody = document.getElementById('pctBody');
+  const specList = document.getElementById('specList');
+  const plateText = document.getElementById('plateText');
+  const barbellSvg = document.getElementById('barbellSvg');
+
+  let unit = 'lb';
+
+  const PLATE_DEFS = {
+    lb: { bar: 45, denoms: [45, 35, 25, 10, 5, 2.5] },
+    kg: { bar: 20, denoms: [25, 20, 15, 10, 5, 2.5, 1.25] }
+  };
+
+  const PLATE_STYLE = {
+    45:{h:100,w:20,color:'#C1372B'}, 25:{h:100,w:20,color:'#C1372B'},
+    35:{h:86,w:18,color:'#2C5F8A'}, 20:{h:86,w:18,color:'#2C5F8A'},
+    15:{h:74,w:16,color:'#C99A2E'},
+    10:{h:62,w:15,color:'#3C7A4A'},
+    5:{h:48,w:13,color:'#EDE7D6'},
+    2.5:{h:36,w:10,color:'#2B2E28'},
+    1.25:{h:28,w:8,color:'#9AA5A9'}
+  };
+
+  function computeOneRM(weight, reps){
+    const r = reps;
+    const epley = weight * (1 + r/30);
+    const brzycki = r < 37 ? weight * (36/(37-r)) : NaN;
+    const lombardi = weight * Math.pow(r, 0.10);
+    const oconner = weight * (1 + 0.025*r);
+    const mayhew = (100*weight) / (52.2 + 41.9*Math.exp(-0.055*r));
+    const list = [
+      {name:'Epley', formula:'w × (1 + r/30)', value:epley},
+      {name:'Brzycki', formula:'w × 36 / (37 − r)', value:brzycki},
+      {name:'Lombardi', formula:'w × r^0.10', value:lombardi},
+      {name:"O'Conner", formula:'w × (1 + 0.025r)', value:oconner},
+      {name:'Mayhew et al.', formula:'100w / (52.2 + 41.9e^−0.055r)', value:mayhew}
+    ].filter(f => !isNaN(f.value) && isFinite(f.value));
+    const average = list.reduce((a,f)=>a+f.value,0) / list.length;
+    return {list, average};
+  }
+
+  function repsForPct(pctFraction){
+    const r = 30 * (1/pctFraction - 1);
+    return Math.max(1, Math.round(r));
+  }
+
+  function platesPerSide(total, bar, denoms){
+    let perSide = (total - bar) / 2;
+    if (perSide <= 0) return [];
+    const result = [];
+    for (const d of denoms){
+      while (perSide >= d - 0.05 && result.length < 8){
+        result.push(d);
+        perSide -= d;
       }
     }
-    </script>
-    
-    <!-- Breadcrumb Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://mohsin4567.github.io/1repmaxcalculator/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Calculator",
-          "item": "https://mohsin4567.github.io/1repmaxcalculator/index.html"
-        }
-      ]
-    }
-    </script>
+    return result;
+  }
+
+  function fmt(n){
+    return Math.round(n * 2) / 2 % 1 === 0 ? Math.round(n) : (Math.round(n*2)/2).toFixed(1);
+  }
+
+  function renderBarbell(plates){
+    const w = 640, h = 150, midY = 75;
+    const collarL = 130, collarR = 510;
+    let svg = `<rect x="30" y="${midY-4}" width="${w-60}" height="8" rx="2" fill="#7C8A8E"/>`;
+    svg += `<rect x="${collarL-6}" y="${midY-16}" width="10" height="32" fill="#7C8A8E"/>`;
+    svg += `<rect x="${collarR-4}" y="${midY-16}" width="10" height="32" fill="#7C8A8E"/>`;
+
+    let xL = collarL - 6;
+    let xR = collarR + 6;
+    plates.forEach(d => {
+      const s = PLATE_STYLE[d] || {h:40,w:10,color:'#888'};
+      xL -= s.w;
+      svg += `<rect x="${xL}" y="${midY - s.h/2}" width="${s.w}" height="${s.h}" rx="3" fill="${s.color}" stroke="#1c1c18" stroke-width="1.5"/>`;
+      xR += 0;
+      svg += `<rect x="${xR}" y="${midY - s.h/2}" width="${s.w}" height="${s.h}" rx="3" fill="${s.color}" stroke="#1c1c18" stroke-width="1.5"/>`;
+      xR += s.w;
+    });
+
+    barbellSvg.innerHTML = svg;
+  }
+
+  function plateSummary(plates, unitLabel){
+    if (plates.length === 0) return `Bar only (${PLATE_DEFS[unit].bar} ${unitLabel}) — no plates needed.`;
+    const counts = {};
+    plates.forEach(d => counts[d] = (counts[d]||0) + 1);
+    const parts = Object.keys(counts).sort((a,b)=>b-a).map(d => `${counts[d]} × ${d}${unitLabel}`);
+    return `Per side: <strong>${parts.join(' + ')}</strong> on a ${PLATE_DEFS[unit].bar}${unitLabel} bar.`;
+  }
+
+  function render(){
+    const weight = parseFloat(weightInput.value) || 0;
+    const reps = Math.min(20, Math.max(1, parseInt(repsInput.value) || 1));
+    repsInput.value = reps;
+    repsNote.classList.toggle('show', reps > 12);
+
+    const {list, average} = computeOneRM(weight, reps);
+
+    resultNumber.textContent = weight > 0 ? fmt(average) : '—';
+    resultUnit.textContent = unit;
+
+    const def = PLATE_DEFS[unit];
+    const rounded = Math.round(average / (unit === 'lb' ? 2.5 : 1.25)) * (unit === 'lb' ? 2.5 : 1.25);
+    const plates = weight > 0 ? platesPerSide(rounded, def.bar, def.denoms) : [];
+    renderBarbell(plates);
+    plateText.innerHTML = weight > 0 ? plateSummary(plates, unit) : 'Enter a weight to see the load.';
+
+    specList.innerHTML = list.map(f => `
+      <div class="spec-row">
+        <div class="spec-name">${f.name}</div>
+        <div class="spec-formula">${f.formula}</div>
+        <div class="spec-value">${weight > 0 ? fmt(f.value) + ' ' + unit : '—'}</div>
+      </div>
+    `).join('');
+
+    const pcts = [100,95,90,85,80,75,70,65,60,55,50];
+    pctBody.innerHTML = pcts.map(p => {
+      const w = weight > 0 ? fmt(average * p/100) : null;
+      const r = repsForPct(p/100);
+      const isMatch = weight > 0 && r === reps;
+      return `
+        <tr class="${isMatch ? 'match' : ''}">
+          <td class="pct-value">${p}%</td>
+          <td>${w !== null ? w + ' ' + unit : '—'}</td>
+          <td>~${r} rep${r === 1 ? '' : 's'}</td>
+          <td class="pct-bar-cell"><div class="pct-bar" style="width:${p}%"></div></td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  unitLb.addEventListener('click', () => {
+    if (unit === 'lb') return;
+    weightInput.value = Math.round(parseFloat(weightInput.value || 0) * 2.20462);
+    unit = 'lb';
+    unitLb.classList.add('active'); unitLb.setAttribute('aria-pressed','true');
+    unitKg.classList.remove('active'); unitKg.setAttribute('aria-pressed','false');
+    render();
+  });
+  unitKg.addEventListener('click', () => {
+    if (unit === 'kg') return;
+    weightInput.value = Math.round(parseFloat(weightInput.value || 0) / 2.20462);
+    unit = 'kg';
+    unitKg.classList.add('active'); unitKg.setAttribute('aria-pressed','true');
+    unitLb.classList.remove('active'); unitLb.setAttribute('aria-pressed','false');
+    render();
+  });
+
+  weightInput.addEventListener('input', render);
+  repsInput.addEventListener('input', render);
+
+  render();
+})();
+</script>
+
 </body>
 </html>
