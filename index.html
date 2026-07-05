@@ -8,24 +8,27 @@
     <meta name="google-site-verification" content="WeAR4c4SPAVcSYXWOXXKKTpcC123NWuZND2gngiqcXw" />
     
     <!-- SEO Meta Tags -->
-    <title>1 Rep Max Calculator - Free Online 1RM Estimator</title>
-    <meta name="description" content="Free 1 Rep Max Calculator. Estimate your maximum weight for a single repetition using Brzycki, Epley, Lander, Lombardi, and Adams formulas. Works for powerlifting, bodybuilding, and strength training.">
-    <meta name="keywords" content="1 rep max calculator, one rep max, 1RM calculator, strength training, powerlifting, bodybuilding, weightlifting calculator">
+    <title>1 Rep Max Calculator - Free Online 1RM Estimator Tool</title>
+    <meta name="description" content="Calculate your 1 rep max instantly with our free online calculator. Uses Brzycki, Epley, Lander, Lombardi & Adams formulas. Perfect for powerlifters, bodybuilders & strength athletes.">
+    <meta name="keywords" content="1 rep max calculator, one rep max, 1RM calculator, strength training calculator, powerlifting calculator, bodybuilding calculator">
     <meta name="author" content="Mohsin">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
     
     <!-- Open Graph Meta Tags (for social media sharing) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mohsin4567.github.io/1repmaxcalculator/">
     <meta property="og:title" content="1 Rep Max Calculator - Free Online 1RM Estimator">
-    <meta property="og:description" content="Calculate your one rep max using multiple formulas. Perfect for powerlifters, bodybuilders, and strength athletes.">
+    <meta property="og:description" content="Calculate your one rep max using 5 proven formulas. Free, fast, and accurate 1RM estimates for all fitness levels.">
     <meta property="og:image" content="https://mohsin4567.github.io/1repmaxcalculator/og-image.png">
+    <meta property="og:site_name" content="1 Rep Max Calculator">
     
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="1 Rep Max Calculator - Free Online 1RM Estimator">
     <meta name="twitter:description" content="Calculate your one rep max using multiple formulas. Perfect for powerlifters, bodybuilders, and strength athletes.">
+    <meta name="twitter:image" content="https://mohsin4567.github.io/1repmaxcalculator/og-image.png">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://mohsin4567.github.io/1repmaxcalculator/">
@@ -33,25 +36,44 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>💪</text></svg>">
     
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
+        <nav class="navbar" aria-label="Main Navigation">
+            <div class="nav-content">
+                <a href="index.html" class="logo" title="1 Rep Max Calculator Home">💪 1RM Calculator</a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Calculator</a></li>
+                    <li><a href="formulas.html">Formulas</a></li>
+                    <li><a href="guide.html">Guide</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </nav>
+
         <header>
             <h1>💪 1 Rep Max Calculator</h1>
             <p class="subtitle">Estimate your maximum weight for a single repetition</p>
+            <p class="tagline">Free online calculator using 5 proven formulas - Brzycki, Epley, Lander, Lombardi & Adams</p>
         </header>
 
         <main class="calculator-wrapper">
             <div class="input-section">
+                <h2>Calculate Your 1RM</h2>
                 <div class="form-group">
-                    <label for="weight">Weight Lifted (lbs)</label>
+                    <label for="weight">Weight Lifted</label>
                     <input 
                         type="number" 
                         id="weight" 
                         placeholder="Enter weight" 
                         min="0" 
                         step="0.5"
+                        aria-label="Weight lifted"
                     >
                 </div>
 
@@ -64,21 +86,22 @@
                         min="1" 
                         max="100" 
                         step="1"
+                        aria-label="Number of repetitions"
                     >
                 </div>
 
                 <div class="form-group">
                     <label for="unit">Weight Unit</label>
-                    <select id="unit">
+                    <select id="unit" aria-label="Weight unit selection">
                         <option value="lbs">Pounds (lbs)</option>
                         <option value="kg">Kilograms (kg)</option>
                     </select>
                 </div>
 
-                <button class="calculate-btn" onclick="calculateOneRepMax()">Calculate 1RM</button>
+                <button class="calculate-btn" onclick="calculateOneRepMax()" aria-label="Calculate one rep max">Calculate 1RM</button>
             </div>
 
-            <div class="results-section" id="results" style="display: none;">
+            <div class="results-section" id="results" style="display: none;" role="region" aria-live="polite" aria-label="Calculation results">
                 <h2>Your 1 Rep Max Estimates</h2>
                 
                 <div class="results-grid">
@@ -124,8 +147,8 @@
                 </div>
             </div>
 
-            <div class="info-section">
-                <h3>ℹ️ How to Use</h3>
+            <section class="info-section" aria-labelledby="how-to-use">
+                <h2 id="how-to-use">How to Use the 1RM Calculator</h2>
                 <ol>
                     <li>Enter the weight you can lift for multiple reps</li>
                     <li>Enter the number of reps you performed</li>
@@ -133,19 +156,55 @@
                     <li>Click "Calculate 1RM" to get your estimates</li>
                 </ol>
 
-                <h3>📊 About the Formulas</h3>
+                <h3>Why Use Multiple Formulas?</h3>
+                <p>Different formulas work better for different rep ranges and individual variations. By calculating with 5 formulas and averaging them, you get the most accurate estimate possible.</p>
+            </section>
+
+            <section class="benefits-section" aria-labelledby="benefits">
+                <h2 id="benefits">Benefits of Calculating Your 1 Rep Max</h2>
                 <ul>
-                    <li><strong>Brzycki:</strong> Weight × (36 / (37 - Reps)) — Most commonly used</li>
-                    <li><strong>Epley:</strong> Weight × (1 + Reps / 30) — Popular and reliable</li>
-                    <li><strong>Lander:</strong> (100 × Weight) / (101.3 - 2.67123 × Reps) — Good for 2-10 reps</li>
-                    <li><strong>Lombardi:</strong> Weight × Reps^0.10 — Power law based</li>
-                    <li><strong>Adams:</strong> Weight × (Reps / 30 + 1) / (1.0278 - 0.0278 × Reps) — Alternative</li>
+                    <li><strong>Track Progress:</strong> Monitor your strength gains over time</li>
+                    <li><strong>Plan Workouts:</strong> Calculate safe training weights based on your max</li>
+                    <li><strong>Set Goals:</strong> Create realistic strength targets</li>
+                    <li><strong>Prevent Injury:</strong> Avoid ego lifting with calculated estimates</li>
+                    <li><strong>Compare Performance:</strong> Benchmark against previous attempts</li>
                 </ul>
-            </div>
+            </section>
+
+            <section class="cta-section">
+                <h2>Learn More About Formulas</h2>
+                <p>Want to know how each formula works? Check out our detailed explanation.</p>
+                <a href="formulas.html" class="cta-button">View All Formulas →</a>
+            </section>
         </main>
 
         <footer>
-            <p>💪 Train hard, lift smart!</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Calculator</a></li>
+                        <li><a href="formulas.html">Formulas</a></li>
+                        <li><a href="guide.html">Beginner's Guide</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="https://github.com/Mohsin4567/1repmaxcalculator" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>Free online 1 rep max calculator for powerlifters, bodybuilders, and fitness enthusiasts worldwide.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 1 Rep Max Calculator. All rights reserved. | 💪 Train hard, lift smart!</p>
+            </div>
         </footer>
     </div>
 
@@ -163,7 +222,34 @@
       "author": {
         "@type": "Person",
         "name": "Mohsin"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
       }
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mohsin4567.github.io/1repmaxcalculator/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Calculator",
+          "item": "https://mohsin4567.github.io/1repmaxcalculator/index.html"
+        }
+      ]
     }
     </script>
 </body>
